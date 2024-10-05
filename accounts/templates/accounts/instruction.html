@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Instruction{% endblock %}
+
+{% block content %}
+<div class="instruction-board bg-white text-dark p-4 rounded">
+    <h1 class="text-center mb-4">Instruction</h1>
+    
+    <!-- Section 1: Introduction to the Dataset -->
+    <div class="p-4 mb-4 rounded" style="background-color: #f8f9fa; border-left: 5px solid #007bff;">
+        <h3 class="text-primary">1. Introduction to the Dataset</h3>
+        <p>The system uses the American Sign Language (ASL) Letters Dataset, which is designed for detecting each ASL letter with a bounding box. The dataset was curated by David Lee, a data scientist with a focus on accessibility, and is available for public use. The dataset contains labeled images of hand gestures representing each letter of the ASL alphabet.</p>
+    </div>
+    
+    <!-- Section 2: Steps to Use the Sign Language Recognition System -->
+    <div class="p-4 mb-4 rounded" style="background-color: #e9ecef; border-left: 5px solid #28a745;">
+        <h3 class="text-success">2. Steps to Use the Sign Language Recognition System</h3>
+        
+        <h4>Access the Recognition Interface</h4>
+        <p>Navigate to the Sign Language Recognition page on the application. Ensure your webcam is connected and enabled in your browser.</p>
+        
+        <h4>Start Gesture Recognition</h4>
+        <p>Position your hand in front of the webcam as per the instructions on the screen. Ensure your hand is within the camera’s view and positioned similarly to the examples provided (e.g., clear background, good lighting). The system will automatically start detecting the gesture once your hand is correctly positioned.</p>
+        
+        <!-- Video tutorial embedded here -->
+        <div class="mt-4 text-center">
+            <h3 class="text-info">Tutorial Video</h3>
+            <video width="800" autoplay loop muted controls>
+                <source src="{% static 'videos/tutorial.mp4' %}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        
+        <h4>Real-Time Recognition</h4>
+        <p>The system will display the recognized letter on the screen in real-time. A bounding box may be shown around your hand to help you position it correctly.</p>
+        
+        <h4>Feedback and Corrections</h4>
+        <p>If the recognized letter is incorrect, you can manually select the correct letter from the options provided. Your feedback will help improve the system’s accuracy over time.</p>
+        
+        <h4>Switch Between Sign Languages (Optional)</h4>
+        <p>If the system supports multiple sign languages, you can switch between them using the language selector. Choose the desired sign language before starting the gesture recognition.</p>
+        
+        <h4>Pause or Stop Recognition</h4>
+        <p>You can pause the recognition process at any time if needed. To stop the recognition session, click the "Stop" button. This will terminate the gesture detection.</p>
+    </div>
+    
+    <!-- Section 3: Tips for Accurate Recognition -->
+    <div class="p-4 mb-4 rounded" style="background-color: #f1f1f1; border-left: 5px solid #ffc107;">
+        <h3 class="text-warning">3. Tips for Accurate Recognition</h3>
+        <ul>
+            <li><strong>Lighting:</strong> Ensure you are in a well-lit area to avoid shadows that may interfere with gesture detection.</li>
+            <li><strong>Background:</strong> Use a plain background to help the system easily detect your hand.</li>
+            <li><strong>Hand Position:</strong> Make sure your hand is fully visible in the webcam feed, and follow the positioning instructions carefully.</li>
+        </ul>
+    </div>
+    
+    <!-- Section 4: Example Use Cases -->
+    <div class="p-4 mb-4 rounded" style="background-color: #fff3cd; border-left: 5px solid #fd7e14;">
+        <h3 class="text-warning">4. Example Use Cases</h3>
+        <p><strong>Learning Tool:</strong> Use the system to practice and learn ASL letters. The real-time feedback helps in quickly correcting and improving your gestures.</p>
+        <p><strong>Communication Aid:</strong> The system can serve as a bridge between ASL users and non-ASL users, converting sign language gestures into readable text.</p>
+    </div>
+    
+    <!-- Section 5: Further Customization and Model Training (Optional) -->
+    <div class="p-4 mb-4 rounded" style="background-color: #e2e3e5; border-left: 5px solid #6c757d;">
+        <h3 class="text-secondary">5. Further Customization and Model Training (Optional)</h3>
+        <p><strong>Dataset Customization:</strong> If you want to improve the model's accuracy for specific conditions or add more variations, you can fork the dataset on Roboflow, apply additional preprocessing, and retrain the model.</p>
+        <p><strong>Augmentations:</strong> Applying augmentations such as rotation, brightness adjustment, or flipping can help the model generalize better across different hand positions and lighting conditions.</p>
+    </div>
+</div>
+{% endblock %}

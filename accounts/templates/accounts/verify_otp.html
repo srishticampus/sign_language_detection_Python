@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Enter OTP{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <h2 class="text-center mb-4">Enter OTP</h2>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+            <div class="card bg-dark-custom text-light border-0 rounded-lg shadow-lg">
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="otp">OTP:</label>
+                            <input type="text" id="otp" name="otp" class="form-control form-control-lg bg-dark-custom" required>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-lg btn-block">Verify OTP</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <a href="{% url 'password_reset' %}" class="text-primary">Resend OTP</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

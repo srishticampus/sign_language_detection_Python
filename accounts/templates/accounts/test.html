@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block title %}Test Sign Language Detection{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-center mb-5 display-4">Test the Sign Language Detector</h2>
+
+    <div class="text-center mb-4">
+        <button id="predict-btn" class="btn btn-primary">Start Prediction</button>
+        <button id="stop-btn" class="btn btn-danger" disabled>Pause</button>
+        <button id="restart-btn" class="btn btn-warning">Stop Prediction</button>
+    </div>
+
+    
+    <div id="tooltip-container" class="tooltip-container text-center">
+        <p id="tooltip"></p>
+    </div>
+
+    <div class="card bg-dark text-light shadow-lg mb-4">
+        <div class="card-body text-center">
+            <h4 class="card-title">Live Detection</h4>
+            <p class="card-text">Enable your webcam to start live detection of sign language gestures.</p>
+            <div id="videoInput" class="text-center mb-4">
+                <img id="video" class="img-fluid" alt="Video Stream" style="display: none;">
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    const startButton = document.getElementById('predict-btn');
+    const stopButton = document.getElementById('stop-btn');
+    const restartButton = document.getElementById('restart-btn');
+    const videoElement = document.getElementById('video');
+    const tooltip = document.getElementById('tooltip');
+
+    
+    function showTooltip(text) {
+        tooltip.innerText = text;
+        tooltip.style.display = 'block';
+    }
+
+    
+    function hideTooltip() {
+        tooltip.style.display = 'none';
+    }
+
+    startButton.onclick = function() {
+        startButton.disabled = true;
+        stopButton.disabled = false;
+
+        videoElement.style.display = 'block';
+        videoElement.src = "{% url 'video_feed' %}";
+    };
+
+    stopButton.onclick = function() {
+        stopButton.disabled = true;
+        startButton.disabled = false;
+
+        fetch("{% url 'stop_video_feed' %}").then(() => {
+            videoElement.style.display = 'none';
+            videoElement.src = "";
+        });
+    };
+
+    restartButton.onclick = function() {
+        alert('Prediction is stopping...');
+        fetch("{% url 'stop_and_restart_view' %}")
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'restarting') {
+                    const checkServerStatus = () => {
+                        fetch("{% url 'dashboard' %}")
+                            .then(response => {
+                                if (response.ok) {
+                                    window.location.reload();
+                                } else {
+                                    setTimeout(checkServerStatus, 2000);
+                                }
+                            })
+                            .catch(() => {
+                                setTimeout(checkServerStatus, 2000);
+                            });
+                    };
+
+                    checkServerStatus();
+                }
+            });
+    };
+
+    
+    startButton.addEventListener('mouseenter', function() {
+        showTooltip('Click to start prediction');
+    });
+    startButton.addEventListener('mouseleave', hideTooltip);
+
+    stopButton.addEventListener('mouseenter', function() {
+        showTooltip('Click to pause');
+    });
+    stopButton.addEventListener('mouseleave', hideTooltip);
+
+    restartButton.addEventListener('mouseenter', function() {
+        showTooltip('After click this button please wait sometimes then continue...');
+    });
+    restartButton.addEventListener('mouseleave', hideTooltip);
+</script>
+{% endblock %}

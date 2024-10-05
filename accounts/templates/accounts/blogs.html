@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 80vh;">
+
+    <div class="card clickable-card mb-4" onclick="window.location.href='https://www.google.co.in/'">
+        <div class="card-body d-flex justify-content-center align-items-center">
+            <h5 class="card-title">Card 1 Title</h5>
+        </div>
+    </div>
+
+
+    <div class="card clickable-card mb-4" onclick="window.location.href='https://www.google.co.in/'">
+        <div class="card-body d-flex justify-content-center align-items-center">
+            <h5 class="card-title">Card 2 Title</h5>
+        </div>
+    </div>
+
+
+    <div class="card clickable-card mb-4" onclick="window.location.href='https://www.google.co.in/'">
+        <div class="card-body d-flex justify-content-center align-items-center">
+            <h5 class="card-title">Card 3 Title</h5>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .card {
+    width: 80%; 
+    height: 20vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    background-color: #2671bd; 
+}
+
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-body {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.container {
+    width: 100%; 
+    margin: 0 auto; 
+}
+
+.mb-4 {
+    margin-bottom: 20px; 
+}
+
+</style>
+{% endblock %}
+

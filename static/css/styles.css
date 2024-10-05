@@ -1,0 +1,163 @@
+/* Base Styles */
+body {
+  background-image: url("../images/background.jpg");
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: #333;
+}
+
+.navbar-brand,
+.nav-link {
+  color: #e0e0e0;
+}
+
+.navbar-brand:hover,
+.nav-link:hover {
+  color: #007bff;
+}
+
+/* Dropdown Styles */
+.navbar-nav .dropdown-menu {
+  background-color: #2c2c2c; /* Match the dropdown background */
+  border: 1px solid #3a3a3a; /* Match the border */
+  color: #e0e0e0; /* Dropdown text color */
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.navbar-nav .dropdown-menu .dropdown-item {
+  color: #e0e0e0; /* Dropdown item text color */
+}
+
+.navbar-nav .dropdown-menu .dropdown-item:hover {
+  background-color: #007bff; /* Highlight on hover */
+  color: #fff; /* Text color on hover */
+}
+
+/* Card Styles */
+.card {
+  background-color: #2c2c2c;
+  border: 1px solid #3a3a3a;
+}
+
+.card-body {
+  color: #e0e0e0;
+}
+
+/* Form Control Styles */
+.form-control {
+  background-color: #2c2c2c;
+  color: #e0e0e0;
+  border: 1px solid #3a3a3a;
+  border-radius: 0.25rem;
+}
+
+.form-control::placeholder {
+  color: #a0a0a0;
+  opacity: 1;
+}
+
+.form-control:focus {
+  background-color: #2c2c2c;
+  color: #e0e0e0;
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+}
+
+.form-control:hover {
+  border-color: #007bff; 
+}
+
+/* Button Styles */
+.btn {
+  border-radius: 0.25rem; /* Rounded corners */
+}
+
+.btn-success {
+  background-color: #28a745; /* Green background for success button */
+  border-color: #28a745; /* Green border for success button */
+}
+
+.btn-success:hover {
+  background-color: #218838; /* Darker green on hover */
+  border-color: #1e7e34; /* Darker green border on hover */
+}
+
+/* Footer Styles */
+footer {
+  background-color: #333; /* Dark background for footer */
+  color: #e0e0e0; /* Light text color for footer */
+}
+
+footer a {
+  color: #007bff; /* Light blue color for links in footer */
+}
+
+footer a:hover {
+  color: #0056b3; /* Darker blue on hover */
+}
+
+/* Utility Classes */
+.bg-dark-custom {
+  background-color: #2c2c2c; /* Custom dark background */
+}
+
+.text-light-custom {
+  color: #e0e0e0; /* Custom light text color */
+}
+
+.text-primary {
+  color: #007bff; /* Primary text color */
+}
+
+.text-primary:hover {
+  color: #0056b3; /* Darker primary color on hover */
+}
+
+.text-center {
+  text-align: center; /* Center align text */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar-nav {
+    text-align: center; /* Center align navbar links on small screens */
+  }
+}
+
+
+.tooltip-container {
+  height: 30px; /* Reserve space for the tooltip */
+  margin-bottom: 20px; /* Add some space below buttons */
+}
+
+#tooltip {
+  color: white;
+  font-size: 1.2rem;
+  display: none; /* Hidden by default */
+}
+
+/* Ensure the card remains in place */
+.card {
+  transition: none; /* Disable movement on hover */
+}
+
+
+.alert-wrapper {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999; /* Makes sure it's on top of other elements */
+  width: 300px;  /* Control the width of the alert */
+  pointer-events: none; /* So it doesn't block interactions with other elements */
+}
+
+.alert {
+  pointer-events: all; /* Re-enable pointer events for the alert itself */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for better visibility */
+}
+
